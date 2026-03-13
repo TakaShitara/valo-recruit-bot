@@ -5,6 +5,7 @@ import time
 import os
 
 TOKEN = os.getenv("DISCORD_TOKEN")
+BOT_VERSION = "V2.3（2026.3.14）"
 
 if not TOKEN:
     raise ValueError("DISCORD_TOKEN is not set")
@@ -324,6 +325,12 @@ class RecruitView(discord.ui.View):
 def build_embed(recruit, now_count):
 
     embed = discord.Embed(title=f"🎮 {recruit['title']}")
+
+    embed.add_field(
+        name="Version",
+        value=BOT_VERSION,
+        inline=False
+    )
 
     embed.add_field(name="募集主", value=f"<@{recruit['owner']}>", inline=False)
     embed.add_field(name="定員", value=f"{now_count}/{recruit['max']}", inline=False)
